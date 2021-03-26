@@ -1,0 +1,8 @@
+{
+  "name": "drag-and-drop",
+  "version": "1.0.0",
+  "description": "Typescript study - drag and drop app",
+  "main": "app.js",
+  "author": "isaiasneto <isaiasneto@gmail.com>",
+  "license": "MIT"
+}
