@@ -4,5 +4,8 @@
   "description": "Typescript study - drag and drop app",
   "main": "app.js",
   "author": "isaiasneto <isaiasneto@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.2.3"
+  }
 }
