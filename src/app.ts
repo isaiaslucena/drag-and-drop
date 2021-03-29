@@ -1,5 +1,15 @@
 enum ProjectStatus { Active, Finished}
 
+type Listener<T> = (items: T[]) => void;
+
+class State<T> {
+  protected listeners: Listener<T>[] = [];
+
+  addListener(listenerFunction: Listener<T>) {
+    this.listeners.push(listenerFunction);
+  }
+}
+
 class Project {
   constructor(
     public id: string,
@@ -10,15 +20,13 @@ class Project {
   ) {}
 }
 
-type Listener = (items: Project[]) => void;
-
-class ProjectState {
+class ProjectState extends State<Project> {
   private projects: any[] = [];
   private static instance: ProjectState;
-  private listeners: Listener[] = [];
+
 
   private constructor() {
-
+    super();
   }
 
   static getInstance() {
@@ -27,19 +35,8 @@ class ProjectState {
     return this.instance;
   }
 
-  addListener(listenerFunction: Listener) {
-    this.listeners.push(listenerFunction);
-  }
-
   addProject(title: string, description: string, people: number) {
     const randomId = Math.random().toString();
-    // const newProject = {
-    //   id: randomId,
-    //   title,
-    //   description,
-    //   people
-    // }
-
     const newProject = new Project(randomId, title, description, people, ProjectStatus.Active);
 
     this.projects.push(newProject);
@@ -65,7 +62,6 @@ function validate(validateInput: ValidateObject) {
 
   if (validateInput.required && validateInput.value.toString()) {
     isValid = !!validateInput.value.toString().trim().length;
-    console.log({isValid, value: validateInput.value});
   }
   if (typeof validateInput.value === 'string' && validateInput.minLength) {
     isValid = validateInput.value.length >= validateInput.minLength;
@@ -73,12 +69,17 @@ function validate(validateInput: ValidateObject) {
   if (typeof validateInput.value === 'string' && validateInput.maxLength) {
     isValid = validateInput.value.length <= validateInput.maxLength;
   }
-  if (typeof validateInput.value === 'number' && validateInput.min) {
+  if (typeof validateInput.value === 'number' && validateInput.min && validateInput.max) {
+    isValid = validateInput.value >= validateInput.min && validateInput.value <= validateInput.max;
+  }
+  if (typeof validateInput.value === 'number' && validateInput.min && !validateInput.max) {
     isValid = validateInput.value >= validateInput.min;
   }
-  if (typeof validateInput.value === 'number' && validateInput.max) {
+  if (typeof validateInput.value === 'number' && validateInput.max && !validateInput.min) {
     isValid = validateInput.value <= validateInput.max;
   }
+
+  console.log({isValid, value: validateInput.value});
 
   return isValid;
 }
