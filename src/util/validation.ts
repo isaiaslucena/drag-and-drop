@@ -1,4 +1,4 @@
-import { ValidateObject } from '../interfaces/validation.js';
+import { ValidateObject } from '../interfaces/validation';
 
 export function validate(validateInput: ValidateObject) {
   let isValid = false;

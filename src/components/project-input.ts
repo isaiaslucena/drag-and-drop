@@ -1,8 +1,8 @@
-import { Component } from './base-components.js';
-import { autoBind } from '../decorators/auto-bind.js';
-import { projectStateInstance } from '../state/project.js';
-import { validate } from '../util/validation.js';
-import { ValidateObject } from '../interfaces/validation.js';
+import { Component } from './base-components';
+import { autoBind } from '../decorators/auto-bind';
+import { projectStateInstance } from '../state/project';
+import { validate } from '../util/validation';
+import { ValidateObject } from '../interfaces/validation';
 
 export class ProjectInput extends Component<HTMLDivElement, HTMLElement> {
   titleInputElement: HTMLInputElement;
