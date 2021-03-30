@@ -9,8 +9,6 @@ interface DraggableTarget {
   dragLeaveHandler(event: DragEvent): void;
 }
 
-
-
 enum ProjectStatus { Active, Finished }
 
 type Listener<T> = (items: T[]) => void;
@@ -251,7 +249,6 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> implements Drag
     }
   }
 }
-
 class ProjectInput extends Component<HTMLDivElement, HTMLElement> {
   titleInputElement: HTMLInputElement;
   descriptionInputElement: HTMLInputElement;
