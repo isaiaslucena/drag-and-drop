@@ -25,7 +25,7 @@ export class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> impl
   }
 
   dragEndHandler(_event: DragEvent) {
-    console.log('Drag End!!');
+    console.log('Drag End!');
   }
 
   configure() {
