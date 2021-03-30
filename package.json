@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Typescript study - drag and drop app",
   "main": "app.js",
-  "author": "isaiasneto <isaiasneto@gmail.com>",
+  "author": "Isaias Lucena <isaiasneto@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
