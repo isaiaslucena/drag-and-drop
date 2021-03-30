@@ -1,10 +1,8 @@
 import { Component } from './base-components.js';
 import { autoBind } from '../decorators/auto-bind.js';
-import { ProjectState } from '../state/project.js';
+import { projectStateInstance } from '../state/project.js';
 import { validate } from '../util/validation.js';
 import { ValidateObject } from '../interfaces/validation.js';
-
-const projectState = ProjectState.getInstance();
 
 export class ProjectInput extends Component<HTMLDivElement, HTMLElement> {
   titleInputElement: HTMLInputElement;
@@ -72,7 +70,7 @@ export class ProjectInput extends Component<HTMLDivElement, HTMLElement> {
     if (Array.isArray(userInput)) {
       const [title, description, people] = userInput;
 
-      projectState.addProject(title, description, people);
+      projectStateInstance.addProject(title, description, people);
       this.clearInputs();
     }
   }
