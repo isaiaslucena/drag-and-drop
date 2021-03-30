@@ -104,7 +104,7 @@ function validate(validateInput: ValidateObject) {
     isValid = validateInput.value <= validateInput.max;
   }
 
-  console.log({isValid, value: validateInput.value});
+  // console.log({isValid, value: validateInput.value});
 
   return isValid;
 }
@@ -167,15 +167,12 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements 
 
   @autobind
   dragStartHandler(event: DragEvent) {
-    // console.log('Drag Start!!');
-    // console.log(event);
     event.dataTransfer!.setData('text/plain', this.project.id);
     event.dataTransfer!.effectAllowed = 'move';
   }
 
   dragEndHandler(_event: DragEvent) {
     console.log('Drag End!!');
-    // console.log(event);
   }
 
   configure() {
@@ -320,7 +317,7 @@ class ProjectInput extends Component<HTMLDivElement, HTMLElement> {
 
     if (Array.isArray(userInput)) {
       const [title, description, people] = userInput;
-      // console.log(title, description, people);
+
       projectState.addProject(title, description, people);
       this.clearInputs();
     }
